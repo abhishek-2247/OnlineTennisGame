@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Welcome To Online Tennis Game</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: #4facfe;
+            color: white;
+            text-align: center;
+            padding: 20px;
+        }
+        h1 {
+            margin-bottom: 30px;
+        }
+        form {
+            background: rgba(137, 234, 241, 0.9);
+            color: #333;
+            padding: 20px;
+            border-radius: 10px;
+            display: inline-block;
+            box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+        }
+        input[type="text"] {
+            width: 200px;
+            padding: 10px;
+            margin: 10px 0;
+            border: 2px solid #3498db;
+            border-radius: 5px;
+        }
+        input[type="button"] {
+            background: #34dbcd;
+            color: rgb(0, 45, 243);
+            padding: 10px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: larger;
+        }
+    </style>
+    <script>
+        
+        function check() 
+        {
+            var reg = /^[a-zA-Z0-9.*%±]+@[a-zA-Z0-9.-]+\.[a-zA-Z]{2,}$/;
+            var email1 = document.forms.registration.e1.value;
+            var email2 = document.forms.registration.e2.value;
+            var name1 = document.forms.registration.p1.value;
+            var name2 = document.forms.registration.p2.value;
+
+            var expires = "";
+            const date = new Date();
+            date.setTime(date.getTime() + (24 * 60 * 60 * 1000)); 
+            expires = " ; expires=" + date.toUTCString();
+
+            
+            if (reg.test(email1) && reg.test(email2)) 
+            {
+                
+                document.cookie = "player1_email=" + encodeURIComponent(email1)+",name="+encodeURIComponent(name1) + expires + "; path=/";
+                document.cookie = "player2_email=" + encodeURIComponent(email2)+",name="+encodeURIComponent(name2) + expires + "; path=/";
+                //document.cookie = "player2_email=" + encodeURIComponent(email2) + expires + "; path=/";
+                //document.cookie = "pname1=" + encodeURIComponent(name1) + expires + "; path=/";
+                //document.cookie = "pname2=" + encodeURIComponent(name2) + expires + "; path=/";
+
+                alert("Loading Game............\n\nCookie Updated");
+                var mywin = window.open('Demo1.html', '_blank', '');
+            } 
+            else {
+                if (!reg.test(email1) && !reg.test(email2)) 
+                {
+                    alert("Both email-ids are invalid!!!!\nPlease Give Correct Emails");
+                } 
+                else if (!reg.test(email2)) 
+                {
+                    alert("Player2's email :- " + email2 + " is invalid \n Try Another");
+                } 
+                else if (!reg.test(email1)) 
+                {
+                    alert("Player1's email :- " + email1 + " is invalid \n Try Another");
+                }
+            }
+        }
+
+        function hover() {
+            var c = document.getElementById("b1");
+            c.style.background = "rgb(0, 45, 243)";
+            c.style.color = '#34dbcd';
+        }
+
+        function normal() {
+            var c = document.getElementById("b1");
+            c.style.background = "#34dbcd";
+            c.style.color = 'rgb(0, 45, 243)';
+        }
+    </script>
+</head>
+<body>
+    <h1>Welcome To Online Tennis Game</h1>
+
+    <form name="registration" action="javascript:void(0);">
+        <label>Player1 Name:</label><br>
+        <input type="text" name="p1" id="p1" required /><br>
+
+        <label>Email:</label><br>
+        <input type="text" name="e1" id="e1" value="" placeholder="Enter Valid email" required /><br><br>
+
+        <label>Player2 Name:</label><br>
+        <input type="text" name="p2" id="p2" required /><br>
+
+        <label>Email:</label><br>
+        <input type="text" name="e2" id="e2" placeholder="Enter Valid email" required /><br><br>
+
+        <input type="button" id="b1" value="Let's Play" onclick="check()"
+        onmouseover="hover()" onmouseout="normal()" />
+    </form>
+
+    <script>
+        function autofil()
+        {
+        var ans = confirm("Can i Write by reading your cookies ??");
+        if(ans)
+    {
+
+
+        var c = document.cookie;
+        var fdata = c.split(";")[0];
+        var sdata = c.split(";")[1];
+
+        var em1 = fdata.split(",")[0].split("=")[1];
+        var nm1 = fdata.split(",")[1].split("=")[1];
+
+        var em2 = sdata.split(",")[0].split("=")[1];
+        var nm2 = sdata.split(",")[1].split("=")[1];
+        
+        document.forms.registration.e1.value = em1.replace("%", "@");
+        document.forms.registration.e2.value = em2.replace("%", "@");
+        document.forms.registration.p1.value = nm1;
+        document.forms.registration.p2.value = nm2;
+
+    }
+        }
+        setTimeout(autofil, 1000);
+    </script>
+</body>
+</html>
