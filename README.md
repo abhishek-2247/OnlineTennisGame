@@ -44,9 +44,6 @@
 - [Project Structure](#-project-structure)
 - [Technologies Used](#-technologies-used)
 - [Getting Started](#-getting-started)
-- [Course Outcomes Addressed](#-course-outcomes-addressed)
-- [Team](#-team)
-- [Mentor](#-mentor)
 
 ---
 
@@ -144,18 +141,6 @@ cd Online-Tennis-Game
 ```
 
 > ⚠️ **Note:** The game uses `window.opener` to read player names from the registration window. Make sure to open `Registration.html` first and let it open `Game.html` automatically by clicking **"Let's Play"**.
-
----
-
-## 📚 Course Outcomes Addressed
-
-This project fulfills the following course outcomes for **22519 - Client Side Scripting Language**:
-
-- ✅ **CO1** — Create interactive web pages using program flow control structures
-- ✅ **CO2** — Implement Arrays and functions in JavaScript
-- ✅ **CO3** — Create event-based web forms using JavaScript
-- ✅ **CO4** — Use JavaScript for handling cookies
-- ✅ **CO5** — Create interactive web pages using Regular Expressions for validations
 
 ---
 
